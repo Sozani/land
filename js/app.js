@@ -17,72 +17,67 @@
  * 
 */
 
-var sections = document.querySelectorAll('section');
-var myUl =document.getElementById('navbar__list');
+const sections = document.querySelectorAll('section');
+const myUl =document.getElementById('navbar__list');
 let fag = document.createDocumentFragment();
 /**
- * End Global Variables
-
- * 
-*/
+ * End Global Variable */
 // build the nav
 //Add li to ul and creat inside it element and text.
 
-    
+//Here Iam using forEach for make loop  over all elements to add li to ul.
 sections.forEach((elem) => {
-   
-    const nano =elem.getAttribute("data-nav");
-    var te = document.createElement("li");
-   
-    var alink = document.createElement("a");
-    alink.className ="menu__link";
-   
- alink.setAttribute("href","#section");
- alink.setAttribute("data-section", "section");
- const tex = document.createTextNode(nano);
-  fag.appendChild(te);
-te.appendChild(alink);
-alink.appendChild(tex);
 
+const nano =elem.getAttribute("data-nav");
+
+const te = document.createElement("li");
+//Here I will create links to add it to li. 
+const alink = document.createElement("a");
+//Add class name to link 
+alink.className ="menu__link";
+//set attribute href and set its value section. 
+alink.setAttribute("href","#section");
+//Set data custom to link and set value to it.
+alink.setAttribute("data-section", "section");
+//Create textnode toadd it to  the link .I used variable nano which carry value of data-nav.
+const tex = document.createTextNode(nano);
+//Now I will use append child to put li inside fagment. 
+fag.appendChild(te);
+//Now I will use append child to put ankor link inside li. 
+te.appendChild(alink);
+//Now I will use append child to put textnode inside ankor link. 
+alink.appendChild(tex);
+//Add event listener to link to make scroll smooth.
 alink.addEventListener("click",()=>{
     elem.scrollIntoView({behavior:"smooth"});
 })
-});
-myUl.appendChild(fag)
+})
+//using append child to append fagment  inside the un order list. 
+myUl.appendChild(fag);
 //End of building the nav
 console.log(myUl);
 
 
-
-
-
-
-
-
 //Set sections as active
+
 //to know active section and Add class 'active' to section when near top of viewport
 window.onscroll = function(){
-
-   sections.forEach(function(funAAct){
+//Use foreach to loop all the section.
+sections.forEach(function(funAAct){
     
-        
+//using get boundingclientrect to fixed position of the section into viewport. 
+    if(funAAct.getBoundingClientRect().top >= 0 && funAAct.getBoundingClientRect().top <= 600){
+    //by if we will add active class to the section which in viewport.
+funAAct.classList.add("your-active-class");
     
-        if(funAAct.getBoundingClientRect().top >= 0 && funAAct.getBoundingClientRect().top <= 600){
+//And remove active class from other sections.
+}else{
     
-            funAAct.classList.add("your-active-class");
+funAAct.classList.remove("your-active-class");
+};
     
-          
-    
-        }else{
-    
-            funAAct.classList.remove("your-active-class");
-    
-            
-    
-        }
-    
-    }    
-    )}
-
+}    
+)}
+//The end of project thanks to you. 
 
 
