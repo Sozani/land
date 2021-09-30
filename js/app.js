@@ -54,13 +54,13 @@ alink.addEventListener("click",()=>{
 })
 //using append child to append fagment  inside the un order list. 
 myUl.appendChild(fag);
-//End of building the nav
+//End of building the nav.
 console.log(myUl);
 
 
-//Set sections as active
+//Set sections as active.
 
-//to know active section and Add class 'active' to section when near top of viewport
+//to know active section and Add class 'active' to section when near top of viewport.
 window.onscroll = function(){
 //Use foreach to loop all the section.
 sections.forEach(function(funAAct){
